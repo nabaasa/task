@@ -7,7 +7,7 @@ if(isset($name)&&isset($mobile)){
 	
 	include 'connect.php';
 	
-	$save=mysqli_query($db,"insert into users(id,name,mobile,company)values(null,'$name','$mobile','$company')");
+	$save=mysqli_query($db,"insert into users(id,AccountName,PAN,phone)values(null,'$name','$mobile','$company')");
 	
 	if($save){
 		echo "User was created successfully!";

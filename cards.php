@@ -1,23 +1,24 @@
 <?php
 include 'connect.php';
+//include error_reporting('E_ALL');
 
 //$upfile = fopen('users.csv', 'r') or die ("can't open file");
 
 //echo "<table border=1>";
 //echo "<tr><th>Account Name</th><th>PAN</th></tr>";
-
-echo "Account Name,Account Number,PAN,Expiry\n";
+//$i=0;
+echo "Account Name,PAN,Phone\n";
 //	
 	//while ($line = fgets($upfile)) {
-		
+		//add date
 		$data=mysqli_query($db,"select * from users");
 		
 		
 		while ($row=mysqli_fetch_array($data)) {
    // $line = explode(",", $line);
 
-    $name = $row["name"];
-    $number = rtrim($row["mobile"]);
+    $name = $row["AccountName"];
+    $number = rtrim($row["PAN"]);
 
     if($number != "" && $number != null) {
         if(substr($number, 0,1) != "0") $number = "0".$number;
@@ -28,14 +29,42 @@ echo "Account Name,Account Number,PAN,Expiry\n";
         // print $pan ."\n";
 $expiry=date("m-y",strtotime("+ 5 years"));
 //        echo "$name,$number,$pan,$expiry\n";
-        echo "$name,$pan\n";
+        echo "$name,$pan \n";
+		
+		
+		
+		$check=mysqli_query($db,"select * from useraccounts where AccountName='$name' and PAN='$pan'");
+		if(mysqli_num_rows($check)>0){
+			mysqli_query($db,"truncate useraccounts");
+			
+			}else{
+				
+				mysqli_query($db,"insert into useraccounts(id,AccountName,PAN)values(null,'$name','$pan')");
+				
+				
+				}
+		
+		
+		
+		//mysqli_query($db,"insert into ");
+		
+		//save to db
+		//read from db
+		
+		
+		
+		
+		
     }
 
 }
 
+
+
+
 //echo "</table>";
 
-
+header('Location:madecards.php');
 
 function validLuhn($number) {
     for ($sum = 0, $i = strlen($number) - 1; $i >= 0; $i--) {

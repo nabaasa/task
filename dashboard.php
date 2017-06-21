@@ -34,9 +34,9 @@ input:focus{
 <br/>
 <form>
 <table width="100%">
-<tr><td><label>Name</label></td><td><input type="text" id="getname" placeholder="enter name"/></td></tr>
-<tr><td><label>Mobile</label></td><td><input type="text" id="getmobile" placeholder="enter mobile"/></td></tr>
-<tr><td><label>Company</label></td><td><input type="text" id="getcompany" placeholder="enter company"/></td></tr>
+<tr><td><label>AccountName</label></td><td><input type="text" id="getname" placeholder="enter account name"/></td></tr>
+<tr><td><label>PAN</label></td><td><input type="text" id="getmobile" placeholder="enter pan"/></td></tr>
+<tr><td><label>Phone</label></td><td><input type="text" id="getcompany" placeholder="enter phone"/></td></tr>
 <tr><td><input type="submit" value="create user" class="btn btn-success" id="sub"/></td></tr>
 
 
@@ -81,7 +81,7 @@ function editID(id){
 			var data2=JSON.parse(data);
 			
 			console.log(data2.name);
-				$('#cn').html('<table width="100%"><tr><td>Name: </td><td><input type="text" value="'+data2.name+'" class="editname"/></td></tr><tr><td>Mobile: </td><td><input type="text" value="'+data2.mobile+'" class="editmobile"/></td></tr><tr><td>Company:</td><td><input type="text" value="'+data2.company+'" class="editcompany"/></td></tr></table>');
+				$('#cn').html('<table width="100%"><tr><td>Name: </td><td><input type="text" value="'+data2.AccountName+'" class="editname"/></td></tr><tr><td>Mobile: </td><td><input type="text" value="'+data2.PAN+'" class="editmobile"/></td></tr><tr><td>Company:</td><td><input type="text" value="'+data2.phone+'" class="editcompany"/></td></tr></table>');
 				
 				
 				$('#got').on('click',function(){

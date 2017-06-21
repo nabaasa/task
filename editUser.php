@@ -11,7 +11,7 @@ if(isset($name)&& isset($mobile)){
 	include 'connect.php';
 	
 	
-	$edit=mysqli_query($db,"update users set name='$name',mobile='$mobile',company='$company' where id='$id'");
+	$edit=mysqli_query($db,"update users set AccountName='$name',PAN='$mobile',phone='$company' where id='$id'");
 	
 	if($edit){
 		
